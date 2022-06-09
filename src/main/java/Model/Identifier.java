@@ -6,15 +6,17 @@ import java.util.UUID;
 
 
 @Getter
-public class BaseEntity {
+public class Identifier {
     /**
-     * Tüm sınıfların id sini üretir.
+     * Tüm sınıfların id'sini üretir.
      */
     private final String id;
 
-    public BaseEntity() {
+
+    public Identifier() {
         this.id = UUID.randomUUID().toString();
     }
+
 
 
 }

@@ -1,16 +1,24 @@
 package Model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Person extends BaseEntity {
+public class Person extends Identifier {
     private String name;
     private String surName;
 
+    public Person(String name, String surName) {
+        this.name = name;
+        this.surName = surName;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Ad='" + name + '\'' +
+                ", Soyad='" + surName + '\'' +
+                '}';
+    }
 }

@@ -1,16 +1,17 @@
 package Model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Product extends BaseEntity {
+public class Product extends Identifier {
 
     private String name;
     private double price;
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
 }
