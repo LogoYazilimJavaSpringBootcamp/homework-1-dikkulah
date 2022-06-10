@@ -3,20 +3,21 @@ package Service;
 import Model.Customer;
 import Model.Order;
 
-import java.util.List;
-
 public interface OrderService {
-    void save(Order order);
 
-    void findAll();// sistemdeki tüm faturalar
+    void save(Customer customer, Order order); //fatura kaydetme
 
-    List<Order> findByJoinDate(int month); // haziran ayında katılanların fatura toplamları
+    void printAll();// sistemdeki tüm faturaları listeleme
 
-    List<Order> findHigherThen(Double price); // 1500 tl üzeri fatura
+    void printOrdersByCustomer(Customer customer); // müşterinin faturalarını listele
 
-    List<Order> findHigherThenAverage(Double price); // 1500 tl üzeri fatura ortalaması
+    void findSumOrderByJoinDate(String month); // X ayında kayıt olanların fatura toplam tutarı
 
-    List<Customer> findLowerThen(Double price); // 500 tl altı fatura sahip isimleri
+    void findHigherThenX(Double price); // x tl üzeri fatura
 
-    List<Customer> findLowerThenSector(Double price); // haziran ayı 750 altı faturaları olan firmaların sektörleri
+    void findAverageHigherThenX(Double price); // 1500 tl üzeri fatura ortalaması
+
+    void findLowerThenX(Double price); // 500 tl altı fatura sahip isimleri
+
+    void findSectorByLowerThenX(Double price, String month); // haziran ayı 750 altı faturaları olan firmaların sektörleri
 }

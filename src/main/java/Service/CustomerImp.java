@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CustomerImp implements CustomerService {
 
-    List<Customer> allCustomers = new ArrayList<>(20); // kayıt görevi görüyor
+    static List<Customer> allCustomers = new ArrayList<>(20); // kayıt görevi görüyor
 
     @Override
     public void save(Customer customer) {
@@ -17,19 +17,21 @@ public class CustomerImp implements CustomerService {
 
     @Override
     public void findByContainsLetter(String letter) {
-        System.out.println("Harfini içerenler");
+        System.out.println("|----------  " + letter + " Harfini içerenler----|");
         allCustomers.stream()
-                .map(customer -> ("  " + customer.getName() + " " + customer.getSurName()))
+                .map(Customer::toStringFullName)
                 .filter(s -> (s.contains(letter.toLowerCase()) || s.contains(letter.toUpperCase())))
                 .forEach(System.out::println);
     }
 
+
     @Override
     public void printAll() {
         AtomicInteger i = new AtomicInteger(0);
-        System.out.println("Tüm müşteriler");
+        System.out.println("|-------------------------------Tüm Müşteriler-------------------------------| ");
+        System.out.println("|----------------------CUSTOMER ID-----------|------------NAME-SURNAME---₺---|");
         allCustomers.stream()
-                .map(customer -> (i.incrementAndGet() + ") " + customer.getName() + " " + customer.getSurName()))
+                .map(Customer::toString)
                 .forEach(System.out::println);
     }
 }

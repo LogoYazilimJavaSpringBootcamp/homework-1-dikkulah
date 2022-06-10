@@ -16,9 +16,13 @@ public class Person extends Identifier {
 
     @Override
     public String toString() {
-        return
-                "Ad='" + name + '\'' +
-                ", Soyad='" + surName + '\'' +
-                '}';
+        return super.toString() +
+                " " + name + " " +
+                " " + surName + " ";
+    }
+
+    public String toStringNoId() {
+        return " " + name +
+                " " + surName;
     }
 }

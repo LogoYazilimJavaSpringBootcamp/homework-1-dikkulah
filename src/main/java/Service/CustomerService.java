@@ -2,8 +2,6 @@ package Service;
 
 import Model.Customer;
 
-import java.util.List;
-
 public interface CustomerService {
     void save(Customer customer);
 

@@ -14,4 +14,12 @@ public class Product extends Identifier {
         this.name = name;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return
+
+                " " + name  +
+                " " + price;
+    }
 }
