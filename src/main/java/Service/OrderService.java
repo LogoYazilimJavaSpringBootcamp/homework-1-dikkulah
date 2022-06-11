@@ -19,5 +19,8 @@ public interface OrderService {
 
     void findLowerThenX(Double price); // 500 tl altı fatura sahip isimleri
 
-    void findSectorByLowerThenX(Double price, String month); // haziran ayı 750 altı faturaları olan firmaların sektörleri
+    //void getAverageOfOrdersFromOneCompany(Customer customer, Double price, String month) ;
+
+
+
 }

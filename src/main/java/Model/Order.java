@@ -27,10 +27,10 @@ public class Order extends Identifier {
 
     }
 
-    public Order(Customer customer, List<Product> products, Double totalPrice, Date orderDate) {
+    public Order(Customer customer, List<Product> products,  Date orderDate) {
         this.customer = customer;
         this.products = products;
-        this.totalPrice = totalPrice;
+        this.totalPrice = calcPrice(products);
         this.orderDate = orderDate;
     }
 
@@ -61,4 +61,5 @@ public class Order extends Identifier {
 
 
     }
+
 }

@@ -8,7 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CustomerImp implements CustomerService {
 
-    static List<Customer> allCustomers = new ArrayList<>(20); // kayıt görevi görüyor
+    final static List<Customer> allCustomers = new ArrayList<>(20); // kayıt görevi görüyor
+    OrderService orderService = new OrderImp();
 
     @Override
     public void save(Customer customer) {
@@ -30,8 +31,24 @@ public class CustomerImp implements CustomerService {
         AtomicInteger i = new AtomicInteger(0);
         System.out.println("|-------------------------------Tüm Müşteriler-------------------------------| ");
         System.out.println("|----------------------CUSTOMER ID-----------|------------NAME-SURNAME---₺---|");
-        allCustomers.stream()
-                .map(Customer::toString)
-                .forEach(System.out::println);
+        allCustomers.stream().map(Customer::toString).forEach(System.out::println);
     }
+
+    /***
+     *
+     * @param price average price
+     * @param month ingilizce ayın kısaltması
+     *
+     */
+    public  void getSectorFromFiltered(Double price, String month) {
+
+        for (Customer customer : allCustomers) {
+            OrderImp.getAverageOfOrdersFromOneByCustomer(customer, price, month);
+        }
+
+    }
+
+
 }
+
+

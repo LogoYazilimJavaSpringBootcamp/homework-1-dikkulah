@@ -18,6 +18,7 @@ public class Customer extends Person {
 
     public Customer(String name, String surName, String sector) {
         super(name, surName);
+
         this.joinDate = new Date();
         this.sector = sector;
     }
@@ -27,16 +28,9 @@ public class Customer extends Person {
         this.orders = orders;
         this.joinDate = new Date();
         this.sector = sector;
-
-
     }
 
-    public Customer(Date joinDate, String name, String surName, List<Order> orders, String sector) {
-        super(name, surName);
-        this.orders = orders;
-        this.joinDate = joinDate;
-        this.sector = sector;
-    }
+
 
     @Override
     public String toString() {

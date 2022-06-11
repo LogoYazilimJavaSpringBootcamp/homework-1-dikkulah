@@ -4,11 +4,13 @@ import Model.Customer;
 import Model.Order;
 import Model.Product;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class OrderImp implements OrderService {
-    private final List<Order> allOrders = new ArrayList<>(CustomerImp.allCustomers.stream().map(customer -> customer.getOrders().get(0)).toList());
+    final static List<Order> allOrders = new ArrayList<>(CustomerImp.allCustomers.stream().map(customer -> customer.getOrders().get(0)).toList());
 
 
     @Override
@@ -64,35 +66,33 @@ public class OrderImp implements OrderService {
     public void findAverageHigherThenX(Double price) {
         System.out.println(price + " ₺ den büyük olan faturaların ortalaması:  "
                 + allOrders.stream().filter(order -> order.getTotalPrice() >= price)
-                .mapToDouble(Order::getTotalPrice).average().getAsDouble() + " ₺");
+                .mapToDouble(Order::getTotalPrice).average().orElseThrow() + " ₺");
     }
 
     @Override
     public void findLowerThenX(Double price) {
         System.out.println("|--------------" + price + "₺ den küçük faturaların sahipleri----------------| ");
-        Set<String> setName = new HashSet<>(allOrders.stream().filter(order -> order.getTotalPrice() <= price).map(order -> order.getCustomer().toStringFullName())
+        Set<String> setName = new HashSet<>(allOrders.stream()
+                .filter(order -> order.getTotalPrice() <= price)
+                .map(order -> order.getCustomer().toStringFullName())
                 .toList());
         setName.forEach(System.out::println);
 
     }
 
 
+    public static void getAverageOfOrdersFromOneByCustomer(Customer customer, Double price, String month)  {
+        try {
+            if (customer.getOrders().stream().filter(order -> order.getOrderDate().toString().contains(month))
+                    .mapToDouble(Order::getTotalPrice).average().orElseThrow() < price) {
+                System.out.println(customer.getSector());
+            }
+        }catch (Exception e){
+           System.out.println(e.getMessage());}
 
-    @Override
-    public void findSectorByLowerThenX(Double price, String month) {
-        System.out.println("|-----" + (month) + " ayında -" + price + "₺ den küçük fatura sahiplerinin sektörü-----| ");
-        List<Order> monthOrders= allOrders.stream().filter(order -> order.getOrderDate().toString().contains("Jun")).toList();
-
-        Map<Customer,Double> map= new HashMap<Customer, Double>();
-       // Set<String> setName = new HashSet<>(monthOrders.stream().map(order ->);
-
-//        var a= monthOrders.stream().mapMulti((order, consumer) -> {
-//            for (Order order1: order.getCustomer().getOrders()){
-//                order.
-//                consumer.accept(new Map<Customer,Double>(order1.getCustomer(),order1.getTotalPrice()));
-//            }
-//        });
 
 
     }
+
+
 }
