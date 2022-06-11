@@ -79,7 +79,13 @@ public class OrderImp implements OrderService {
         setName.forEach(System.out::println);
 
     }
-
+    /**
+     *
+     * @param customer custumer
+     * @param price price
+     * @param month ay
+     * @print customerın  month ayındaki faturalarının ortalaması price dan düşük ise printliyor
+     */
 
     public static void getAverageOfOrdersFromOneByCustomer(Customer customer, Double price, String month)  {
         try {
