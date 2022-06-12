@@ -19,7 +19,6 @@ public interface OrderService {
 
     void findLowerThenX(Double price); // 500 tl altı fatura sahip isimleri
 
-    //void getAverageOfOrdersFromOneCompany(Customer customer, Double price, String month) ;
 
 
 

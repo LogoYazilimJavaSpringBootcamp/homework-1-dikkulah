@@ -55,10 +55,10 @@ public class Main {
 
 
         customerService.save(ufuk);
-        //customerService.save(ahmet);
+        customerService.save(ahmet);
         customerService.save(tugce);
         customerService.save(ceyhun);
-        //customerService.save(zeynep); // Yeni Müşteri kayıt
+        customerService.save(zeynep); // Yeni Müşteri kayıt
         Order order6 = new Order(ceyhun,productList3,new Date());
         Order order1 = new Order(ufuk, productList);
         Order order4 = new Order(ufuk, productList1);
@@ -89,10 +89,8 @@ public class Main {
         System.out.println();
         orderService.findLowerThenX(500.0); // 500 den küçük faturalar
         System.out.println();
-        System.out.println();
-
         customerService.getSectorFromFiltered(750.0,"Jun");
-
+        System.out.println();
 
     }
 }

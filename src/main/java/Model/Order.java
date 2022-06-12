@@ -47,19 +47,12 @@ public class Order extends Identifier {
     @Override
     public String toString() {
         return super.toString() +
-                "customer=" + customer +
-                ", products=" + products.toString() +
-                ", totalPrice=" + totalPrice +
+                " |" + customer.toStringFullName() +
+                " |" + products.toString() +
+                " |" + totalPrice +"₺"+
                 '}';
     }
 
-    public String toStringNoId() {
-        return
-                customer + " " +
-                        products + " " +
-                        " " + totalPrice;
 
-
-    }
 
 }

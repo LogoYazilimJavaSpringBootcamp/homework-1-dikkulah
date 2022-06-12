@@ -4,10 +4,9 @@ import Model.Customer;
 import Model.Order;
 import Model.Product;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class OrderImp implements OrderService {
     final static List<Order> allOrders = new ArrayList<>(CustomerImp.allCustomers.stream().map(customer -> customer.getOrders().get(0)).toList());
@@ -36,8 +35,12 @@ public class OrderImp implements OrderService {
     @Override
     public void printOrdersByCustomer(Customer customer) {
         System.out.println("|-------" + customer.toStringFullName() + " ın faturaları : --------------]");
-        customer.getOrders().stream().map(order -> order.getId() + " " + order.getProducts().toString() + " " + order.getTotalPrice() + "₺").forEach(System.out::println);
+        // Map kullanmak için silindi
+        //customer.getOrders().stream().map(order -> order.getId() + " " + order.getProducts().toString() + " " + order.getTotalPrice() + "₺").forEach(System.out::println);
 
+        Map<String,List<Product>> a= allOrders.stream().filter(order -> order.getCustomer() == customer).collect(Collectors.toMap(Order::getId,Order::getProducts));
+
+        a.forEach((key, value) -> System.out.println(key + " " + new ArrayList<>(value) ));
     }
 
 
@@ -94,7 +97,7 @@ public class OrderImp implements OrderService {
                 System.out.println(customer.getSector());
             }
         }catch (Exception e){
-           System.out.println(e.getMessage());}
+           System.out.println(customer.toStringFullName() + " müşterisinin hiç faturası yok.");}
 
 
 

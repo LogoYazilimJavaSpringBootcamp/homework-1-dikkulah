@@ -1,18 +1,22 @@
 package Service;
 
 import Model.Customer;
+import Model.Order;
+import Model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CustomerImp implements CustomerService {
 
     final static List<Customer> allCustomers = new ArrayList<>(20); // kayıt görevi görüyor
-    OrderService orderService = new OrderImp();
 
     @Override
     public void save(Customer customer) {
+
+        System.out.println(customer.toStringFullName() + " müşterisi kaydedildi.");
         allCustomers.add(customer);
     }
 
@@ -28,10 +32,11 @@ public class CustomerImp implements CustomerService {
 
     @Override
     public void printAll() {
-        AtomicInteger i = new AtomicInteger(0);
         System.out.println("|-------------------------------Tüm Müşteriler-------------------------------| ");
         System.out.println("|----------------------CUSTOMER ID-----------|------------NAME-SURNAME---₺---|");
         allCustomers.stream().map(Customer::toString).forEach(System.out::println);
+
+
     }
 
     /***
@@ -40,8 +45,9 @@ public class CustomerImp implements CustomerService {
      * @param month ingilizce ayın kısaltması
      *
      */
+    @Override
     public  void getSectorFromFiltered(Double price, String month) {
-
+        System.out.println("----- "+month+" ayındaki faturalarının ortalamaları "+ price+ "₺ dan küçük olanları sektörleri---");
         for (Customer customer : allCustomers) {
             OrderImp.getAverageOfOrdersFromOneByCustomer(customer, price, month);
         }

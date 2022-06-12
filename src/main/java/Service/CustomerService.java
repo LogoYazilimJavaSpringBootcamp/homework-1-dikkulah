@@ -10,5 +10,4 @@ public interface CustomerService {
     void printAll();
 
     void getSectorFromFiltered(Double value, String month);
-
 }
