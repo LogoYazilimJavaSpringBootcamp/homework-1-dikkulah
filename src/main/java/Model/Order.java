@@ -15,8 +15,7 @@ public class Order extends Identifier {
     private  Double totalPrice;
     private Date orderDate;
 
-    public Order() {
-    }
+
 
 
     public Order(Customer customer, List<Product> products) {
