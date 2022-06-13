@@ -46,8 +46,9 @@
       1. ArrayList<E>  Liste halindeki verileri dinamik diziler olarak yapar. Array'ye çevrilebilir. Boyutu default olarak 10dur ve eklendikçe artar.Bir eleman silindiğinde otomatik kaydırır. Esnek ancak maliyetlidir.
       2. LinkedList<E> Çift yönlü bağlı liste algoritmasını kullanır. her eleman kendinden önceki ve sonraki elemanı işaret eder.Silme ve araya eleman ekleme durumunda kaydırma işlemi yapmaz.
       3. Vector<E> ArrayList senkronize olmadığı için Vector sınıfına göre daha hızlıdır. Ancak vektör sınıfı ok işlem ortamında daha fazla veri güvenliği sağlar.
-      4. Queue =LinkedList<E> FIFO ve LIFO yapısını sağlamak için üretilmiştir. Girilen sayı listenin sonuna veya başına eklenir, ve çekilen eleman listenin başından ve sonundan gelir. İndex numarası yoktur.
-      5. PriorityQueue<>(,compare) linkedQueue den farklı olarak kuyruğa ekleme işlemini yaparken Comparator kullanır ve buna göre kuyruğu düzenler.
+   3. Queue<E> 
+      1. Queue =LinkedList<E> FIFO ve LIFO yapısını sağlamak için üretilmiştir. Girilen sayı listenin sonuna veya başına eklenir, ve çekilen eleman listenin başından ve sonundan gelir. İndex numarası yoktur.
+      2. PriorityQueue<>(,compare) linkedQueue den farklı olarak kuyruğa ekleme işlemini yaparken Comparator kullanır ve buna göre kuyruğu düzenler.
 
    2. Map<K,V> Deponan değerler bir anahtara refere edilir ve öğreyi bulmak kolaylaşır.
       Map<Key,Value> şeklindedir
