@@ -1,10 +1,8 @@
 package Model;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+
 public class Fruit extends Product{
 
     public Fruit(String name, Double price) {
@@ -21,4 +19,6 @@ public class Fruit extends Product{
     public String productInfo() {
         return super.productInfo()+"\n ---------------";
     }
+
+
 }

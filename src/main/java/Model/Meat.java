@@ -3,8 +3,7 @@ package Model;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class Meat extends Product{
     public Meat() {
     }
