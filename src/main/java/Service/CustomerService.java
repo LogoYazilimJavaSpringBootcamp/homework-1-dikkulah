@@ -3,11 +3,11 @@ package Service;
 import Model.Customer;
 
 public interface CustomerService {
-    void save(Customer customer);
+    void save(Customer customer); // Kullanıcı kaydetme
 
-    void findByContainsLetter(String letter); // içerisinde c olanlar için
+    void findByContainsLetter(String letter); // Adında c harfini ierinler
 
-    void printAll();
+    void printAll(); // Tüm müşterileri yazdırma
 
-    void getSectorFromFiltered(Double value, String month);
+    void getSectorFromFiltered(Double value, String month);  // x ayındaki siparişleri ortalaması x değerinden küçük olanları yazdırma
 }
