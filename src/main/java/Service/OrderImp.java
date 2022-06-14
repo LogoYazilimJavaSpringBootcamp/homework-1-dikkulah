@@ -5,7 +5,6 @@ import Model.Order;
 import Model.Product;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class OrderImp implements OrderService {
@@ -82,26 +81,7 @@ public class OrderImp implements OrderService {
         setName.forEach(System.out::println);
 
     }
-    /**
-     *
-     * @param customer custumer
-     * @param price price
-     * @param month ay
-     * @print customerın  month ayındaki faturalarının ortalaması price dan düşük ise printliyor
-     */
 
-    public static void getAverageOfOrdersFromOneByCustomer(Customer customer, Double price, String month)  {
-        try {
-            if (customer.getOrders().stream().filter(order -> order.getOrderDate().toString().contains(month))
-                    .mapToDouble(Order::getTotalPrice).average().orElseThrow() < price) {
-                System.out.println(customer.getSector());
-            }
-        }catch (Exception e){
-           System.out.println(customer.toStringFullName() + " müşterisinin hiç faturası yok.");}
-
-
-
-    }
 
 
 }
