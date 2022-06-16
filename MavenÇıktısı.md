@@ -1,7 +1,7 @@
 # Maven çıktısı:
-1. mvn clean: proje derlenirken oluşan target klasörünü siler.
+1. `mvn clean: proje derlenirken oluşan target klasörünü siler.`
    ![](image/clean.png)
-2. mvn validate : projenin target dosyasını siler ve hatalı kısımları tarar.
+2. `mvn validate : projenin target dosyasını siler ve hatalı kısımları tarar.`
    ![](image/validate.png)
 3. mvn compile :projeyi clean ve validate eder ardından derler.
    ![](image/compile.png)
