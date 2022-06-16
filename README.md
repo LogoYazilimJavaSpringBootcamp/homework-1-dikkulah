@@ -16,7 +16,7 @@
    5. Genel olarak c++ ın neden desteklediğinden çok javanın neden desteklemediği üzerine metinler var.C++ programcıya
       daha esnek bir kullanım sunuyor ancak yöneteim daha zor ve hata yapma ihtimali daha çok.
 3. `Build Tool nedir? Java ekosistemindeki toollar neler?`
-   6. Temel olarak derleme otomasyonu denebilir, kaynak koddan yürütülebilir uygulamaların oluşturulmasını sağlar, proje
+    Temel olarak derleme otomasyonu denebilir, kaynak koddan yürütülebilir uygulamaların oluşturulmasını sağlar, proje
       büyüdüke bağımlılıkları arttıkça takip etmesi ve yönetmesi zorlaşır build toollar ile bu yönetimi sağlarız.
       1. Bağımlıkları yönetir.
       2. Kodu derler, paketler ve test eder.
