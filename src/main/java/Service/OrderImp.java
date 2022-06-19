@@ -8,21 +8,20 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrderImp implements OrderService {
-    final static List<Order> allOrders = new ArrayList<>(CustomerImp.allCustomers.stream().map(customer -> customer.getOrders().get(0)).toList());
 
 
     @Override
     public void save(Customer customer, Order order) {
         customer.getOrders().add(order);
         System.out.println(customer.getName() + " müşterisine fatura kaydedildi: " + customer.getOrders().toString());
-        allOrders.add(order);
+        Order.getAllOrders().add(order);
     }
 
     @Override
     public void printAll() {
         System.out.println("|---------------------Tüm faturalar-----------------------| ");
         System.out.println("|-----------ORDER ID-----------|-------NAME-SURNAME---₺---|");
-        allOrders.stream()
+        Order.getAllOrders().stream()
                 .map(order -> (order.getId() + " " + order.getCustomer().getName() + " "
                         + order.getCustomer().getSurName()) + " "
                         + order.getProducts().stream().map(Product::getName).toList() + " "
@@ -37,7 +36,7 @@ public class OrderImp implements OrderService {
         // Map kullanmak için silindi
         //customer.getOrders().stream().map(order -> order.getId() + " " + order.getProducts().toString() + " " + order.getTotalPrice() + "₺").forEach(System.out::println);
 
-        Map<String,List<Product>> a= allOrders.stream().filter(order -> order.getCustomer() == customer).collect(Collectors.toMap(Order::getId,Order::getProducts));
+        Map<String,List<Product>> a= Order.getAllOrders().stream().filter(order -> order.getCustomer() == customer).collect(Collectors.toMap(Order::getId,Order::getProducts));
 
         a.forEach((key, value) -> System.out.println(key + " " + new ArrayList<>(value) ));
     }
@@ -45,7 +44,7 @@ public class OrderImp implements OrderService {
 
     @Override  // X ayında kayıt olanların fatura toplam tutarı
     public void findSumOrderByJoinDate(String month) {
-        List<Order> monthOrders= allOrders.stream().filter(order -> order.getCustomer().getJoinDate().toString().contains("Jun")).toList();
+        List<Order> monthOrders= Order.getAllOrders().stream().filter(order -> order.getCustomer().getJoinDate().toString().contains("Jun")).toList();
         System.out.println("|---"+month + "   ayında kayıt olan müşterilerin fatura toplamı----------|");
         System.out.println(monthOrders.stream().mapToDouble(Order::getTotalPrice).sum());
 
@@ -56,7 +55,7 @@ public class OrderImp implements OrderService {
     public void findHigherThenX(Double price) {
         System.out.println("|--------------" + price + "₺ den büyük faturalar----------------| ");
         System.out.println("|-----------ORDER ID-----------|-------NAME-SURNAME---₺---|");
-        allOrders.stream().filter(order -> order.getTotalPrice() >= price)
+        Order.getAllOrders().stream().filter(order -> order.getTotalPrice() >= price)
                 .toList()
                 .forEach(order -> System.out.println(order.getId() + " " +
                         order.getCustomer().getName() + " " +
@@ -67,14 +66,14 @@ public class OrderImp implements OrderService {
     @Override
     public void findAverageHigherThenX(Double price) {
         System.out.println(price + " ₺ den büyük olan faturaların ortalaması:  "
-                + allOrders.stream().filter(order -> order.getTotalPrice() >= price)
+                + Order.getAllOrders().stream().filter(order -> order.getTotalPrice() >= price)
                 .mapToDouble(Order::getTotalPrice).average().orElseThrow() + " ₺");
     }
 
     @Override
     public void findLowerThenX(Double price) {
         System.out.println("|--------------" + price + "₺ den küçük faturaların sahipleri----------------| ");
-        Set<String> setName = new HashSet<>(allOrders.stream()
+        Set<String> setName = new HashSet<>(Order.getAllOrders().stream()
                 .filter(order -> order.getTotalPrice() <= price)
                 .map(order -> order.getCustomer().toStringFullName())
                 .toList());

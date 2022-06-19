@@ -73,7 +73,7 @@ public class Main {
 
 
         System.out.println();
-        orderService.printAll();
+        orderService.printAll(); //tüm faturaları listeleme
         System.out.println();
         customerService.printAll(); //Tüm müşterileri listeleme
         System.out.println();
@@ -87,7 +87,7 @@ public class Main {
         System.out.println();
         orderService.findLowerThenX(500.0); // 500 den küçük faturalar
         System.out.println();
-        customerService.getSectorFromFiltered(750.0,"Jun");
+        customerService.getSectorFromFiltered(750.0,"Jun"); //x ayı faturaları ortalaması x ten küçük olanların sectörleri
         System.out.println();
 
     }

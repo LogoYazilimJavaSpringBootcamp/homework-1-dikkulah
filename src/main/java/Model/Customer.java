@@ -14,6 +14,10 @@ public class Customer extends Person {
     private  List<Order> orders = new ArrayList<>();
     private String sector;
 
+    private static final  List<Customer> allCustomers =new ArrayList<>() ; // kayıt görevi görüyor
+    public static List<Customer> getAllCustomers(){
+        return allCustomers;
+    }
 
 
     public Customer(String name, String surName, String sector) {

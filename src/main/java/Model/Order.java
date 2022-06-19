@@ -1,8 +1,10 @@
 package Model;
 
+import Service.CustomerImp;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,12 +12,18 @@ import java.util.List;
 @Getter
 public class Order extends Identifier {
 
+
     private Customer customer;
     private List<Product> products;
     private  Double totalPrice;
     private Date orderDate;
 
 
+    private final static List<Order> allOrders = new ArrayList<>(); // kayıt görevi görüyor
+
+    public static List<Order> getAllOrders() {
+        return allOrders;
+    }
 
 
     public Order(Customer customer, List<Product> products) {
